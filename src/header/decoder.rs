@@ -73,10 +73,10 @@ impl Decoder {
     }
 
     fn decode_mirroring(&mut self) {
-        let mirroring = self.header.mirroring.unwrap_or(Mirroring::Vertical);
+        let mirroring = self.header.mirroring.unwrap_or(Mirroring::Horizontal);
         self.buffer[6] |= match mirroring {
-            Mirroring::Vertical => 0b0000,
-            Mirroring::Horizontal => 0b0001,
+            Mirroring::Horizontal => 0b0000,
+            Mirroring::Vertical => 0b0001,
             Mirroring::FourScreens => 0b1000,
         };
     }

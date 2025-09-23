@@ -88,9 +88,9 @@ impl Encoder {
         if self.buffer[6] & 0b1000 != 0 {
             Mirroring::FourScreens
         } else if self.buffer[6] & 0b0001 != 0 {
-            Mirroring::Horizontal
-        } else {
             Mirroring::Vertical
+        } else {
+            Mirroring::Horizontal
         }
     }
 

@@ -4,8 +4,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 #[serde(try_from = "String", into = "String")]
 pub enum Mirroring {
-    Vertical,
     Horizontal,
+    Vertical,
     FourScreens,
 }
 
@@ -14,8 +14,8 @@ impl TryFrom<String> for Mirroring {
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
         match value.as_str() {
-            "Vertical" => Ok(Mirroring::Vertical),
             "Horizontal" => Ok(Mirroring::Horizontal),
+            "Vertical" => Ok(Mirroring::Vertical),
             "FourScreens" => Ok(Mirroring::FourScreens),
             _ => bail!("invalid mirroring name: {value}"),
         }
@@ -25,8 +25,8 @@ impl TryFrom<String> for Mirroring {
 impl From<Mirroring> for String {
     fn from(value: Mirroring) -> Self {
         let value = match value {
-            Mirroring::Vertical => "Vertical",
             Mirroring::Horizontal => "Horizontal",
+            Mirroring::Vertical => "Vertical",
             Mirroring::FourScreens => "FourScreens",
         };
         value.to_string()
