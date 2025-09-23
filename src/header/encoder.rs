@@ -219,7 +219,7 @@ fn encode_rom_size(lsb: u8, msb: u8, unit_size: u64) -> Result<String> {
     } else {
         let units = lsb as u64 | (msb as u64) << 8;
         let size = units * unit_size;
-        if size.is_multiple_of(1024) {
+        if size != 0 && size.is_multiple_of(1024) {
             Ok(format!("{}M", size / 1024))
         } else {
             Ok(format!("{}K", size))
