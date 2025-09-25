@@ -211,7 +211,7 @@ impl Encoder {
 fn encode_rom_size(lsb: u8, msb: u8, unit_size: u64) -> Result<String> {
     if msb == 0xF {
         let exp = ((lsb & 0b1111_1100) >> 2) as u64;
-        let mul = (msb & 0b0000_0011) as u64;
+        let mul = (lsb & 0b0000_0011) as u64;
         if exp > 60 {
             bail!("too large rom size");
         }
